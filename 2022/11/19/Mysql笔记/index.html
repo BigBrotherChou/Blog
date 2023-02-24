@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://www.porridgez.top/imgs/sringbootcover.jpeg">
 <meta property="article:published_time" content="2022-11-19T12:49:36.000Z">
-<meta property="article:modified_time" content="2023-01-19T03:36:05.164Z">
+<meta property="article:modified_time" content="2023-02-24T11:41:49.559Z">
 <meta property="article:author" content="PorridgeZ">
 <meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary_large_image">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          3.1k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          16 分钟
+          26 分钟
         
       </span>
     
@@ -276,8 +276,7 @@
             
               <div class="markdown-body">
                 
-                <h3 id="Mysql学习笔记"><a href="#Mysql学习笔记" class="headerlink" title="Mysql学习笔记"></a>Mysql学习笔记</h3><hr>
-<h4 id="创建数据库命令"><a href="#创建数据库命令" class="headerlink" title="创建数据库命令"></a>创建数据库命令</h4><ol>
+                <h3 id="Mysql学习笔记"><a href="#Mysql学习笔记" class="headerlink" title="Mysql学习笔记"></a>Mysql学习笔记</h3><h2 id="1-创建数据库命令"><a href="#1-创建数据库命令" class="headerlink" title="1 创建数据库命令"></a>1 创建数据库命令</h2><ol>
 <li><p><code>SHOW DATABASES;</code> <code>SHOW TABLES;</code>显示数据库&#x2F;数据表预览。</p>
 </li>
 <li><p><code>USE [database_name];</code>进入到数据库database_name中。</p>
@@ -287,7 +286,7 @@
 <li><p><code>CREATE TABLE [table_name] (column_name1 column properties,column_name1 column properties,...);</code>创建数据表名称为table_name，字段名称以及相应的属性为括号中所描述的。</p>
 </li>
 </ol>
-<h4 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h4><ol>
+<h2 id="2-插入数据"><a href="#2-插入数据" class="headerlink" title="2 插入数据"></a>2 插入数据</h2><ol>
 <li><p><code>INSERT INTO [table_name] values (data1,data2,...);</code>向表table_name中插入数据。</p>
 </li>
 <li><p><code>INSERT INTO [table_name] (column1,column2) values (data1,data2);</code>向指定列插入数据。</p>
@@ -295,10 +294,7 @@
 <li><p><code>INSERT INTO [table_name] values (data1,data2,...),(data1,data2,...);</code>插入多条记录的数据。</p>
 </li>
 </ol>
-<h4 id="MySql数据类型"><a href="#MySql数据类型" class="headerlink" title="MySql数据类型"></a>MySql数据类型</h4><ol>
-<li>基本数字类型</li>
-</ol>
-<table>
+<h2 id="3-MySql数据类型"><a href="#3-MySql数据类型" class="headerlink" title="3 MySql数据类型"></a>3 MySql数据类型</h2><h3 id="3-1-基本数字类型"><a href="#3-1-基本数字类型" class="headerlink" title="3.1 基本数字类型"></a>3.1 基本数字类型</h3><table>
 <thead>
 <tr>
 <th align="left">数据类型</th>
@@ -347,10 +343,7 @@
 <td align="left">DECIMAL 可能的最大取值范围与 DOUBLE 相同，但是有效的取值范围由 M 和 D 决定。如果改变 M 而固定 D，则取值范围将随 M 的变大而变大。</td>
 </tr>
 </tbody></table>
-<ol start="2">
-<li>字符串类型</li>
-</ol>
-<table>
+<h3 id="3-2-字符串类型"><a href="#3-2-字符串类型" class="headerlink" title="3.2 字符串类型"></a>3.2 字符串类型</h3><table>
 <thead>
 <tr>
 <th>类型名称</th>
@@ -447,6 +440,27 @@
 </tr>
 </tbody></table>
 <p><code>TIMESTAMP</code> 的显示格式与 <code>DATETIME</code> 相同，显示宽度固定在 19 个字符，日期格式为 <code>YYYY-MM-DD HH：MM：SS</code>，在存储时需要 4 个字节。但是 <code>TIMESTAMP</code> 列的取值范围小于 DATETIME 的取值范围，为 ‘1970-01-01 00：00：01’UTC～’2038-01-19 03：14：07’UTC。在插入数据时，要保证在合法的取值范围内。</p>
+<h2 id="4-索引"><a href="#4-索引" class="headerlink" title="4 索引"></a>4 索引</h2><h3 id="4-1-索引分类"><a href="#4-1-索引分类" class="headerlink" title="4.1 索引分类"></a>4.1 索引分类</h3><p>在数据库中，索引是一种单独的、物理的对数据库表中一列或者多列的值进行<em><strong>排序</strong></em>的一种存储结构，因此索引可以大大提高数据库的检索效率。</p>
+<p>如今，Mysql的默认搜索引擎多是InnoDB，在使用此引擎时常见的索引有<em><strong>主键Primary Key</strong></em>、<em><strong>普通索引Index</strong></em>、<em><strong>复合索引</strong></em>。</p>
+<h3 id="4-1-普通索引Index"><a href="#4-1-普通索引Index" class="headerlink" title="4.1 普通索引Index"></a>4.1 普通索引Index</h3><p>普通索引是Mysql中最基本的索引，可以作用于任意字段，其创建方法如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-operator">&lt;</span>TABLE_NAME<span class="hljs-operator">&gt;</span> <span class="hljs-keyword">ADD</span> INDEX <span class="hljs-keyword">ON</span> <span class="hljs-operator">&lt;</span>INDEX_NAME<span class="hljs-operator">&gt;</span>(COLUMN_NAME)<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-2-主键索引Primary-Key"><a href="#4-2-主键索引Primary-Key" class="headerlink" title="4.2 主键索引Primary Key"></a>4.2 主键索引Primary Key</h3><p>主键是具有唯一性并且不允许为<code>NULL</code>，所以他是一种特殊的唯一索引。一般在建立表的时候选定。在创建表时在字段后添加<code>PRIMARY KEY</code>。</p>
+<h3 id="4-3-复合索引"><a href="#4-3-复合索引" class="headerlink" title="4.3 复合索引"></a>4.3 复合索引</h3><p>复合索引也就是组合索引，是指给多个字段添加索引，使用时遵循<em><strong>最左原则</strong></em>。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">ADD</span> INDEX user_index (user_name,user_phone,user_emp_id)<br></code></pre></td></tr></table></figure>
+
+<p>上述sql语句在<code>user_name</code>、<code>user_phone</code>、<code>user_emp_id</code>字段添加了组合索引，在此情况下只有以下三种情况会使用到索引：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> FROME <span class="hljs-keyword">user</span> <span class="hljs-keyword">WHERE</span> user_name<span class="hljs-operator">=</span><span class="hljs-string">&#x27;aaa&#x27;</span>;<br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> FROME <span class="hljs-keyword">user</span> <span class="hljs-keyword">WHERE</span> user_name<span class="hljs-operator">=</span><span class="hljs-string">&#x27;aaa&#x27;</span> <span class="hljs-keyword">AND</span> user_phone <span class="hljs-operator">=</span> <span class="hljs-number">123</span>;<br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> FROME <span class="hljs-keyword">user</span> <span class="hljs-keyword">WHERE</span> user_name<span class="hljs-operator">=</span><span class="hljs-string">&#x27;aaa&#x27;</span> <span class="hljs-keyword">AND</span> user_phone <span class="hljs-operator">=</span> <span class="hljs-number">123</span> <span class="hljs-keyword">AND</span> user_emp_id <span class="hljs-operator">=</span> <span class="hljs-number">111</span>;<br></code></pre></td></tr></table></figure>
+
+<p>也就是说只有<code>user_name</code>、<code>user_name,user_phone</code>、<code>user_name,user_phone,user_emp_id</code>三个索引。</p>
+<p>此时会出现以下几种情形：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> FROME <span class="hljs-keyword">user</span> <span class="hljs-keyword">WHERE</span> user_name<span class="hljs-operator">=</span><span class="hljs-string">&#x27;aaa&#x27;</span><span class="hljs-keyword">AND</span> user_emp_id<span class="hljs-operator">=</span><span class="hljs-number">111</span>;<br>此时只走了user_name的索引<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> FROME <span class="hljs-keyword">user</span> <span class="hljs-keyword">WHERE</span> user_name<span class="hljs-operator">=</span><span class="hljs-string">&#x27;aaa&#x27;</span> <span class="hljs-keyword">AND</span>  user_emp_id <span class="hljs-operator">=</span> <span class="hljs-number">111</span> <span class="hljs-keyword">AND</span>  user_phone <span class="hljs-operator">=</span> <span class="hljs-number">123</span>;<br>此时虽然顺序是反的，但<span class="hljs-keyword">sql</span>查询优化器会进行优化。<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> FROME <span class="hljs-keyword">user</span> <span class="hljs-keyword">WHERE</span>  user_emp_id<span class="hljs-operator">=</span><span class="hljs-number">111</span>;<br>此时就不会经过索引<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-5-总结"><a href="#4-5-总结" class="headerlink" title="4.5 总结"></a>4.5 总结</h3><p>Mysql数据表中每增加一个索引，就会在数据文件增加一个树形的数据结构，主键索引和非主键索引都是一棵树，不同的是非主键索引的叶子结点存的是id（也可以说主键索引的唯一标识，如果主键是id，非主键索引存的就是叶子节点的id，如果没有主键，就是mysql默认选择的列或者虚拟列row_id)。</p>
 
                 
               </div>
